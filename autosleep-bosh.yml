@@ -1,0 +1,25 @@
+jobs: 
+- name: autosleep-app
+  templates: 
+  - name: cf-app
+    release: cf-apps-release
+  instances: 2
+  resource_pool: tiny
+  properties:
+    env:
+      - JAVA_OPTS: -verbosegc
+    bound-services:
+      - autosleep-mysql
+
+- name: autosleep-mysql
+  templates:
+  - name: cf-service
+    release: cf-apps-release
+  instances: 2
+  resource_pool: tiny
+  properties:
+    type: p-mysql
+    plan: default
+    arbitrary params: "{ action=update}"
+
+properties:
