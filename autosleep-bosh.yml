@@ -3,7 +3,7 @@ jobs:
   templates: 
   - name: cf-app
     release: cf-apps-release
-  instances: 2
+  instances: 1
   resource_pool: tiny
   properties:
     env:
@@ -15,7 +15,7 @@ jobs:
   templates:
   - name: cf-service
     release: cf-apps-release
-  instances: 2
+  instances: 1
   resource_pool: tiny
   properties:
     type: p-mysql
