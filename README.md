@@ -50,6 +50,8 @@ $ bosh logs autosleep-app/1
 # Version upgrade with 20% slices: canary=1 instance=4 cf_instance_per_ambassador=1
 # Concourse job has created a new release with updated job source/blob: autosleep.jar
 $ bosh upload release
+# Operator chooses to deploy new version
+$ bosh deploy 
 updating autosleep-app/1
 updating autosleep-app/2
 updating autosleep-app/3
@@ -105,6 +107,10 @@ Solutions:
       * cf bind-service autosleep-v105-i1 autosleep-mysql
       * FAILED because autosleep-mysql does not exist 
 
+How to reuse the release across apps ?
+* a bosh-gen like template
+* a generic bosh release (git submodule) 
+
 # FAQ
 
 # Why use bosh to deploy apps on CF ?
@@ -115,7 +121,7 @@ Bosh is attractive for platform teams because:
   * properties are documented
   * releases are versionned (dev and final)
   * final releases are self-contained and do not require external dependencies
-  * canary releases
+  * canary releases update
 
 CF is attractive for a number of platform components w.r.t. to plain bosh-based packaging:
 - domains and routes
